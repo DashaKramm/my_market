@@ -1,4 +1,7 @@
+from django.db.models import RestrictedError
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 
 # Create your views here.
 from webapp.models import Product, Category
@@ -50,3 +53,32 @@ def product_add_view(request):
             image=image,
         )
         return redirect('product_view', pk=product.pk)
+
+
+def categories_view(request):
+    categories = Category.objects.order_by('-id')
+    return render(request, 'categories_view.html', context={'categories': categories})
+
+
+def delete_category(request, *args, pk, **kwargs):
+    try:
+        get_object_or_404(Category, pk=pk).delete()
+    except RestrictedError:
+        return render(request, 'categories_view.html',
+                      {'error_message': 'Невозможно удалить категорию, так как она используется в товарах'})
+    return HttpResponseRedirect(reverse('categories_view'))
+
+
+def category_edit_view(request, *args, pk, **kwargs):
+    category = get_object_or_404(Category, pk=pk)
+    if request.method == "GET":
+        return render(request, "category_edit_view.html", {"category": category})
+    else:
+        name = request.POST.get("name")
+        description = request.POST.get("description")
+        if not description:
+            description = None
+        category.name = name
+        category.description = description
+        category.save()
+        return redirect('categories_view')
