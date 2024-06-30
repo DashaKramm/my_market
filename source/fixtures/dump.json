@@ -32,6 +32,14 @@
   }
 },
 {
+  "model": "webapp.category",
+  "pk": 8,
+  "fields": {
+    "name": "Хозяйственные товары",
+    "description": null
+  }
+},
+{
   "model": "webapp.product",
   "pk": 1,
   "fields": {
@@ -89,6 +97,30 @@
     "added_to": "2024-06-29T19:19:02.365Z",
     "price": "1100.00",
     "image": "https://gnomj.ru/images/006/264/498/6264498/990xnoinc/hmdxYQ19vDk.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 7,
+  "fields": {
+    "name": "Гель для стирки концентрат 5 литров",
+    "description": "Концентрированный эко гель для стирки с ароматом Лаванды Dutybox на 500 стирок —  экологичное средство для стирки",
+    "category": 8,
+    "added_to": "2024-06-30T11:06:58.710Z",
+    "price": "1850.00",
+    "image": "https://cdn1.ozone.ru/s3/multimedia-1-8/7002443564.jpg"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 8,
+  "fields": {
+    "name": "Жидкое мыло для рук пенка",
+    "description": "Набор жидкого мыла от Dutybox в подарочной упаковке. 3 различных аромата из 9 блоков! Всего 4, 5 литра мыла пенки.",
+    "category": 8,
+    "added_to": "2024-06-30T11:25:04.911Z",
+    "price": "700.00",
+    "image": "https://grass.su/upload/iblock/648/j0dz810083sk83r84nrmoq3davrxrpd4.jpg"
   }
 }
 ]
