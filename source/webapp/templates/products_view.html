@@ -10,7 +10,7 @@
                                  style="width: 150px; height: 150px;">
                             <div class="d-flex flex-column flex-grow-1">
                                 <h5 class="card-title mb-2">{{ product.name }}</h5>
-                                <p class="card-subtitle mb-2 text-success"><i>{{ product.category }}</i></p>
+                                <p class="card-subtitle mb-2 text-success"><i>{{ product.category.name }}</i></p>
                                 <p class="card-text"><b>Price: {{ product.price }}c</b></p>
                                 <div class="mt-auto">
                                     <a href="{% url 'product_view' product.pk %}" class="card-link text-info">see more
