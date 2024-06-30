@@ -5,7 +5,7 @@
         {% csrf_token %}
         <br/>
         <input type="text" name="name" maxlength="50" placeholder="Name" aria-label="Name" class="w-50"/><br/><br/>
-        <textarea name="description" placeholder="Description" aria-label="Description" class="w-50"></textarea><br/>
+        <textarea name="description" maxlength="120" placeholder="Description" aria-label="Description" class="w-50"></textarea><br/>
         <input class="btn btn-primary rounded-0" type="submit" value="Add category"/>
     </form>
 {% endblock %}

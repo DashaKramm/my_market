@@ -4,13 +4,13 @@
     <form action="" method="post">
         {% csrf_token %}
         <br/>
-        <input type="text" name="name" value="{{ category.name }}" maxlength="50" placeholder="{{ category.price }}"
+        <input type="text" name="name" value="{{ category.name }}" maxlength="50" placeholder="Name"
                aria-label="Name" class="w-50"/><br/><br/>
         {% if category.description %}
-            <textarea name="description" placeholder="Description" aria-label="Description"
+            <textarea name="description" maxlength="120" placeholder="Description" aria-label="Description"
                       class="w-50">{{ category.description }}</textarea><br/>
         {% else %}
-            <textarea name="description" placeholder="Description" aria-label="Description" class="w-50"></textarea>
+            <textarea name="description" maxlength="120" placeholder="Description" aria-label="Description" class="w-50"></textarea>
             <br/>
         {% endif %}
         <input class="btn btn-primary rounded-0" type="submit" value="Edit category"/>

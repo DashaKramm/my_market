@@ -22,13 +22,9 @@ def category_add_view(request):
     if request.method == "GET":
         return render(request, "category_add_view.html")
     else:
-        name = request.POST.get("name")
-        description = request.POST.get("description")
-        if not description:
-            description = None
         Category.objects.create(
-            name=name,
-            description=description,
+            name=request.POST.get("name"),
+            description=request.POST.get("description") or None,
         )
         return redirect('products_view')
 
@@ -38,19 +34,12 @@ def product_add_view(request):
         categories = Category.objects.all()
         return render(request, "product_add_view.html", context={"categories": categories})
     else:
-        name = request.POST.get("name")
-        description = request.POST.get("description")
-        category_id = request.POST.get("category_id")
-        price = request.POST.get("price")
-        image = request.POST.get("image")
-        if not description:
-            description = None
         product = Product.objects.create(
-            name=name,
-            description=description,
-            category_id=category_id,
-            price=price,
-            image=image,
+            name=request.POST.get("name"),
+            description=request.POST.get("description") or None,
+            category_id=request.POST.get("category_id"),
+            price=request.POST.get("price"),
+            image=request.POST.get("image"),
         )
         return redirect('product_view', pk=product.pk)
 
@@ -74,11 +63,27 @@ def category_edit_view(request, *args, pk, **kwargs):
     if request.method == "GET":
         return render(request, "category_edit_view.html", {"category": category})
     else:
-        name = request.POST.get("name")
-        description = request.POST.get("description")
-        if not description:
-            description = None
-        category.name = name
-        category.description = description
+        category.name = request.POST.get("name")
+        category.description = request.POST.get("description") or None
         category.save()
         return redirect('categories_view')
+
+
+def delete_product(request, *args, pk, **kwargs):
+    get_object_or_404(Product, pk=pk).delete()
+    return HttpResponseRedirect(reverse('products_view'))
+
+
+def product_edit_view(request, *args, pk, **kwargs):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == "GET":
+        categories = Category.objects.all()
+        return render(request, "product_edit_view.html", {"product": product, "categories": categories})
+    else:
+        product.name = request.POST.get("name")
+        product.description = request.POST.get("description") or None
+        product.category_id = request.POST.get("category_id")
+        product.price = request.POST.get("price")
+        product.image = request.POST.get("image")
+        product.save()
+        return redirect('product_view', pk=product.pk)
