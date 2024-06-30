@@ -20,13 +20,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-4 ms-md-4 ms-lg-auto">
+            <ul class="navbar-nav ms-4 ms-md-4 ms-lg-auto align-items-center">
                 {% block links %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Add product</a>
+                        <a href="#" class="nav-link text-primary text-decoration-underline">Add product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Add category</a>
+                        <span class="mx-2">|</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-primary text-decoration-underline">Add category</a>
                     </li>
                 {% endblock %}
             </ul>
