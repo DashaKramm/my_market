@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
+from webapp.forms import ProductForm
 # Create your views here.
 from webapp.models import Product, Category
 
@@ -31,18 +32,14 @@ def category_add_view(request):
 
 def product_add_view(request):
     if request.method == "GET":
-        categories = Category.objects.all()
-        return render(request, "product_add_view.html", context={"categories": categories})
+        form = ProductForm()
+        return render(request, "product_add_view.html", context={'form': form})
     else:
-        product = Product.objects.create(
-            name=request.POST.get("name"),
-            description=request.POST.get("description") or None,
-            category_id=request.POST.get("category_id"),
-            price=request.POST.get("price"),
-            image=request.POST.get("image"),
-            remainder=request.POST.get("remainder"),
-        )
-        return redirect('product_view', pk=product.pk)
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            product = form.save()
+            return redirect('product_view', pk=product.pk)
+        return render(request, "product_add_view.html", context={'form': form})
 
 
 def categories_view(request):
@@ -82,14 +79,13 @@ def delete_product(request, *args, pk, **kwargs):
 def product_edit_view(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, pk=pk)
     if request.method == "GET":
-        categories = Category.objects.all()
-        return render(request, "product_edit_view.html", {"product": product, "categories": categories})
+        # categories = Category.objects.all()
+        form = ProductForm(instance=product)
+        return render(request, "product_edit_view.html", context={'form': form})
     else:
-        product.name = request.POST.get("name")
-        product.description = request.POST.get("description") or None
-        product.category_id = request.POST.get("category_id")
-        product.price = request.POST.get("price")
-        product.image = request.POST.get("image")
-        product.remainder = request.POST.get("remainder")
-        product.save()
-        return redirect('product_view', pk=product.pk)
+        form = ProductForm(data=request.POST, instance=product)
+        if form.is_valid():
+            product = form.save()
+            return redirect('product_view', pk=product.pk)
+        else:
+            return render(request, "product_edit_view.html", context={'form': form})
