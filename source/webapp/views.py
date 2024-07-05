@@ -40,6 +40,7 @@ def product_add_view(request):
             category_id=request.POST.get("category_id"),
             price=request.POST.get("price"),
             image=request.POST.get("image"),
+            remainder=request.POST.get("remainder"),
         )
         return redirect('product_view', pk=product.pk)
 
@@ -85,5 +86,6 @@ def product_edit_view(request, *args, pk, **kwargs):
         product.category_id = request.POST.get("category_id")
         product.price = request.POST.get("price")
         product.image = request.POST.get("image")
+        product.remainder = request.POST.get("remainder")
         product.save()
         return redirect('product_view', pk=product.pk)

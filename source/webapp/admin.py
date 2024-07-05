@@ -16,11 +16,11 @@ admin.site.register(Category, CategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'description', 'category', 'added_to', 'price']
+    list_display = ['id', 'name', 'description', 'category', 'added_to', 'price', 'remainder']
     list_display_links = ['id', 'name']
     list_filter = ['category']
     search_fields = ['name', 'description', 'category', 'price']
-    fields = ['name', 'description', 'category', 'added_to', 'price', 'image']
+    fields = ['name', 'description', 'category', 'added_to', 'price', 'image', 'remainder']
     readonly_fields = ['added_to']
 
 

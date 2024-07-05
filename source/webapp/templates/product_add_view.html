@@ -5,7 +5,8 @@
         {% csrf_token %}
         <br/>
         <input type="text" name="name" maxlength="50" placeholder="Name" aria-label="Name" class="w-50 mb-2"/><br/>
-        <textarea name="description" maxlength="120"  placeholder="Description" aria-label="Description" class="w-50"></textarea><br/>
+        <textarea name="description" maxlength="120" placeholder="Description" aria-label="Description"
+                  class="w-50"></textarea><br/>
         <select name="category_id" id="category_id" class="w-50 mb-2" aria-label="Category">
             <option selected disabled hidden>Category</option>
             {% for category in categories %}
@@ -13,8 +14,8 @@
             {% endfor %}
         </select><br>
         <input type="text" name="price" placeholder="Price" aria-label="Price" class="w-50 mb-2"/><br/>
-        <input type="text" name="image" placeholder="Image URL" aria-label="Image URL"
-               class="w-50 mb-2"/><br/>
+        <input type="text" name="image" placeholder="Image URL" aria-label="Image URL" class="w-50 mb-2"/><br/>
+        <input type="text" name="remainder" placeholder="Remainder" aria-label="Remainder" class="w-50 mb-2"/><br/>
         <input class="btn btn-primary rounded-0" type="submit" value="Add product"/>
     </form>
 {% endblock %}

@@ -8,6 +8,7 @@
                 <h4 class="card-title">{{ product.name }}</h4>
                 <p class="card-title text-success"><i>{{ product.category.name }}</i></p>
                 <h6 class="card-subtitle mb-2"><b>Price: {{ product.price }}c</b></h6>
+                <h6 class="card-subtitle mb-2"><b>Remainder: {{ product.remainder }} pcs</b></h6>
                 <div style="flex-grow: 1;">
                     {% if product.description %}
                         <p class="card-text" style="white-space: pre-wrap"><b><i>{{ product.description }}</i></b></p>
@@ -17,8 +18,7 @@
                 <div>
                     <a href="{% url 'product_edit_view' product.pk %}"
                        class="btn btn-info btn-sm rounded-0 me-2 text-white">Edit</a>
-                    <a href="{% url 'delete_product' product.pk %}"
-                       class="btn btn-danger btn-sm rounded-0">Delete</a>
+                    <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger btn-sm rounded-0">Delete</a>
                 </div>
             </div>
         </div>
