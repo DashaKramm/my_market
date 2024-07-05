@@ -71,7 +71,11 @@ def category_edit_view(request, *args, pk, **kwargs):
 
 
 def delete_product(request, *args, pk, **kwargs):
-    get_object_or_404(Product, pk=pk).delete()
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == "GET":
+        return render(request, "product_delete_view.html", context={"product": product})
+    else:
+        product.delete()
     return HttpResponseRedirect(reverse('products_view'))
 
 

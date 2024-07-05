@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Delete Product</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Вы действительно хотите удалить продукт "{{ product.name }}"?</p>
+        <div class="d-flex justify-content-start">
+            <input type="submit" value="Да" class="btn btn-danger rounded-0 me-2">
+            <a href="{% url "products_view" %}" class="btn btn-primary rounded-0">Нет</a>
+        </div>
+    </form>
+{% endblock %}
