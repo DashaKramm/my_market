@@ -9,7 +9,7 @@ from webapp.models import Product, Category
 
 # Create your views here.
 def products_view(request):
-    products = Product.objects.order_by('-id')
+    products = Product.objects.filter(remainder__gte=1).order_by('category__name', 'name')
     return render(request, 'products_view.html', context={'products': products})
 
 
