@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from webapp.forms import ProductForm, CategoryForm
+from webapp.forms import ProductForm, CategoryForm, ProductSearchForm
 # Create your views here.
 from webapp.models import Product, Category
 
@@ -11,7 +11,11 @@ from webapp.models import Product, Category
 # Create your views here.
 def products_view(request):
     products = Product.objects.filter(remainder__gte=1).order_by('category__name', 'name')
-    return render(request, 'products_view.html', context={'products': products})
+    search = request.GET.get('search')
+    if search:
+        products = Product.objects.filter(name=search, remainder__gte=1).order_by('category__name', 'name')
+    search_form = ProductSearchForm(initial={'search': search})
+    return render(request, 'products_view.html', context={'products': products, 'search_form': search_form})
 
 
 def product_view(request, *args, pk, **kwargs):

@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+    <form method="get" action="{% url 'products_view' %}" class="mb-3">
+        {{ search_form.search.label_tag }}
+        {{ search_form.search }}
+        <button type="submit" class="btn btn-primary">Поиск</button>
+    </form>
     <div class="row mt-3">
         {% for product in products %}
             <div class="col-md-6 col-lg-4 mb-4">
