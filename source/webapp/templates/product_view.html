@@ -6,7 +6,11 @@
                  style="width: auto; max-height: 200px; align-self: center;">
             <div class="d-flex flex-column flex-grow-1">
                 <h4 class="card-title">{{ product.name }}</h4>
-                <p class="card-title text-success"><i>{{ product.category.name }}</i></p>
+                <p class="card-title text-success">
+                    <a href="{% url 'products_by_category_view' product.category.slug %}">
+                        <i>{{ product.category.name }}</i>
+                    </a>
+                </p>
                 <h6 class="card-subtitle mb-2"><b>Price: {{ product.price }}c</b></h6>
                 <h6 class="card-subtitle mb-2"><b>Remainder: {{ product.remainder }} pcs</b></h6>
                 <div style="flex-grow: 1;">

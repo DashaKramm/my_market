@@ -7,7 +7,7 @@ from webapp.models import Category, Product
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ['name', 'description']
         widgets = {
             'description': widgets.Textarea(attrs={"cols": 24, "rows": 5}),
         }

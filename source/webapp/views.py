@@ -96,3 +96,14 @@ def product_edit_view(request, *args, pk, **kwargs):
             return redirect('product_view', pk=product.pk)
         else:
             return render(request, "product_edit_view.html", context={'form': form})
+
+
+def products_by_category_view(request, *args, slug, **kwargs):
+    category = get_object_or_404(Category, slug=slug)
+    search = request.GET.get('search')
+    products = Product.objects.filter(category=category, remainder__gte=1).order_by('name')
+    if search:
+        products = products.filter(name=search)
+    search_form = ProductSearchForm(initial={'search': search})
+    return render(request, 'products_by_category_view.html',
+                  context={'products': products, 'category': category, 'search_form': search_form})

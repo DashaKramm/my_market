@@ -1,32 +1,4 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form method="get" action="{% url 'products_view' %}" class="mb-3">
-        {{ search_form.search.label_tag }}
-        {{ search_form.search }}
-        <button type="submit" class="btn btn-primary">Поиск</button>
-    </form>
-    <div class="row mt-3">
-        {% for product in products %}
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-2" style="flex-grow: 1;">
-                            <img src="{{ product.image }}" alt="" class="img-fluid me-3"
-                                 style="width: 150px; height: 150px;">
-                            <div class="d-flex flex-column flex-grow-1">
-                                <h5 class="card-title mb-2">{{ product.name }}</h5>
-                                <p class="card-subtitle mb-2 text-success"><i>{{ product.category.name }}</i></p>
-                                <p class="card-text"><b>Price: {{ product.price }}c</b></p>
-                                <p class="card-text"><b>Remainder: {{ product.remainder }} pcs</b></p>
-                                <div class="mt-auto">
-                                    <a href="{% url 'product_view' product.pk %}" class="card-link text-info">see more
-                                        >>></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    {% include 'partial/product_list.html' %}
 {% endblock %}
