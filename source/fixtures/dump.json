@@ -1,42 +1,47 @@
 [
 {
   "model": "webapp.category",
-  "pk": 1,
+  "pk": 18,
   "fields": {
-    "name": "Настольные игры",
-    "description": null
+    "name": "Pet Supplies",
+    "description": "Товары для животных",
+    "slug": "pet-supplies"
   }
 },
 {
   "model": "webapp.category",
-  "pk": 2,
+  "pk": 19,
   "fields": {
-    "name": "Зоотовары",
-    "description": "Товары для животных"
+    "name": "Food Products",
+    "description": "",
+    "slug": "food-products"
   }
 },
 {
   "model": "webapp.category",
-  "pk": 3,
+  "pk": 20,
   "fields": {
-    "name": "Текстиль",
-    "description": "Постельное бельё, полотенца, шторы, покрывала"
+    "name": "Household Goods",
+    "description": "",
+    "slug": "household-goods"
   }
 },
 {
   "model": "webapp.category",
-  "pk": 4,
+  "pk": 21,
   "fields": {
-    "name": "Продукты питания",
-    "description": null
+    "name": "Textiles",
+    "description": "Постельное бельё, полотенца, шторы, покрывала",
+    "slug": "textiles"
   }
 },
 {
   "model": "webapp.category",
-  "pk": 8,
+  "pk": 22,
   "fields": {
-    "name": "Хозяйственные товары",
-    "description": null
+    "name": "Board Games",
+    "description": "",
+    "slug": "board-games"
   }
 },
 {
@@ -45,7 +50,7 @@
   "fields": {
     "name": "\"Древний ужас\"",
     "description": "Командная приключенческая игра для 1–8 игроков, в основе которой лежит всемирно известный «Ужас Аркхэма»",
-    "category": 1,
+    "category": 22,
     "added_to": "2024-06-29T13:19:46.650Z",
     "price": "5500.00",
     "image": "https://hobbygames.ru/image/cache/hobbygames_beta/data/HobbyWorld/Eldritch_horror/EH00-1024x1024-wm.jpg",
@@ -58,7 +63,7 @@
   "fields": {
     "name": "Полотенца кухонные",
     "description": "Набор кухонных полотенец из микрофибры. Презентабельно упакованы и подходят для подарка.",
-    "category": 3,
+    "category": 21,
     "added_to": "2024-06-29T18:50:08.120Z",
     "price": "540.00",
     "image": "https://lamantin.by/d/1_2023-10-04t205003341.webp",
@@ -71,7 +76,7 @@
   "fields": {
     "name": "Наполнитель",
     "description": "Сибирская кошка \"ЭЛИТА ЭКО\" - наполнитель силикагель 24 литра.",
-    "category": 2,
+    "category": 18,
     "added_to": "2024-06-29T18:53:50.401Z",
     "price": "2700.00",
     "image": "https://animal.kg/image/cache/catalog/napolniteli/sk-green_16-700x700.jpg",
@@ -84,7 +89,7 @@
   "fields": {
     "name": "Протеиновое печенье Брауни",
     "description": "Брауни без сахара - 5 вкусов, 12 штук",
-    "category": 4,
+    "category": 19,
     "added_to": "2024-06-29T18:55:59.531Z",
     "price": "1250.00",
     "image": "https://basket-05.wbbasket.ru/vol1001/part100139/100139479/images/big/1.webp",
@@ -97,7 +102,7 @@
   "fields": {
     "name": "\"Манчкин\"",
     "description": "Настольная игра для 3-6 игроков «Манчкин» — это лихая пародия на ролевые игры в жанре фэнтези.",
-    "category": 1,
+    "category": 22,
     "added_to": "2024-06-29T19:19:02.365Z",
     "price": "1100.00",
     "image": "https://gnomj.ru/images/006/264/498/6264498/990xnoinc/hmdxYQ19vDk.jpg",
@@ -110,7 +115,7 @@
   "fields": {
     "name": "Гель для стирки концентрат 5 литров",
     "description": "Концентрированный эко гель для стирки с ароматом Лаванды Dutybox на 500 стирок —  экологичное средство для стирки",
-    "category": 8,
+    "category": 20,
     "added_to": "2024-06-30T11:06:58.710Z",
     "price": "1850.00",
     "image": "https://cdn1.ozone.ru/s3/multimedia-1-8/7002443564.jpg",
@@ -123,7 +128,7 @@
   "fields": {
     "name": "Жидкое мыло для рук пенка",
     "description": "Набор жидкого мыла от Dutybox в подарочной упаковке. 3 различных аромата из 9 блоков! Всего 4, 5 литра мыла пенки.",
-    "category": 8,
+    "category": 20,
     "added_to": "2024-06-30T11:25:04.911Z",
     "price": "700.00",
     "image": "https://grass.su/upload/iblock/648/j0dz810083sk83r84nrmoq3davrxrpd4.jpg",
