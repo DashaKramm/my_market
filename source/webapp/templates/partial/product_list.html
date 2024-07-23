@@ -1,7 +1,5 @@
-<form method="get" action="{% url 'products_view' %}" class="mb-3">
-    {{ search_form.search.label_tag }}
-    {{ search_form.search }}
-    <button type="submit" class="btn btn-primary btn-sm">Поиск</button>
+<form method="get">
+    {% include 'partial/search_form.html' with form=search_form %}
 </form>
 <div class="row mt-3">
     {% for product in products %}
@@ -23,7 +21,7 @@
                             <p class="card-text"><b>Price: {{ product.price }}c</b></p>
                             <p class="card-text"><b>Remainder: {{ product.remainder }}pcs</b></p>
                             <div class="mt-auto">
-                                <a href="{% url 'product_view' product.pk %}" class="card-link text-info">see more
+                                <a href="{{ product.get_absolute_url }}" class="card-link text-info">see more
                                     >>></a>
                             </div>
                         </div>
@@ -31,5 +29,10 @@
                 </div>
             </div>
         </div>
+    {% empty %}
+        <h2>продукты не найдены</h2>
     {% endfor %}
 </div>
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
