@@ -17,7 +17,7 @@ class Product(models.Model):
         return reverse('product_view', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return f"{self.pk}) {self.name} - {self.price}"
+        return f"{self.name} - {self.price} с"
 
     class Meta:
         db_table = "products"

@@ -22,7 +22,11 @@
                             <p class="card-text"><b>Remainder: {{ product.remainder }}pcs</b></p>
                             <div class="mt-auto">
                                 <a href="{{ product.get_absolute_url }}" class="card-link text-info">see more
-                                    >>></a>
+                                    >>></a><br><br>
+                                <form action="{% url 'add_to_cart' product.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>

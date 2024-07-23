@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from webapp.models import Product, Category
+from webapp.models import Product, Category, CartItem
 
 
 # Register your models here.
@@ -25,3 +25,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+
+
+class CartAdmin(admin.ModelAdmin):
+    list_display = ['id', 'product', 'quantity']
+    list_display_links = ['id', 'product']
+    search_fields = ['product__name']
+    fields = ['quantity']
+
+
+admin.site.register(CartItem, CartAdmin)
