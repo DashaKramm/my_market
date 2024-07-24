@@ -1,8 +1,9 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView
 
+from webapp.forms.orders import OrderForm
 from webapp.models import CartItem, Product
 from webapp.forms import CartItemForm
 
@@ -22,17 +23,20 @@ class AddToCartView(CreateView):
             if new_quantity <= product.remainder:
                 cart_item.quantity = new_quantity
                 cart_item.save()
-                return HttpResponseRedirect(self.success_url)
             else:
                 form.add_error(None, "Недостаточно товара в наличии.")
                 return self.form_invalid(form)
         else:
             if quantity <= product.remainder:
                 form.instance.product = product
-                return super().form_valid(form)
+                super().form_valid(form)
+                next_url = self.request.GET.get('next', self.success_url)
+                return redirect(next_url)
             else:
                 form.add_error(None, "Недостаточно товара в наличии.")
                 return self.form_invalid(form)
+        next_url = self.request.GET.get('next', self.success_url)
+        return redirect(next_url)
 
 
 class CartView(ListView):
@@ -45,6 +49,7 @@ class CartView(ListView):
         cart_items = context['cart_items']
         total = sum(item.quantity * item.product.price for item in cart_items)
         context['total'] = total
+        context['form'] = OrderForm()
         return context
 
 
@@ -54,3 +59,13 @@ class RemoveFromCartView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        cart_item = get_object_or_404(CartItem, pk=kwargs['pk'])
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            cart_item.delete()
+        next_url = request.POST.get('next', self.success_url)
+        return redirect(next_url)

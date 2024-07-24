@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from webapp.models import Product, Category, CartItem
+from webapp.models.order import Order
 
 
 # Register your models here.
@@ -35,3 +36,15 @@ class CartAdmin(admin.ModelAdmin):
 
 
 admin.site.register(CartItem, CartAdmin)
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['id', 'username', 'telephone', 'created_at']
+    list_display_links = ['id', 'username']
+    search_fields = ['username', 'telephone']
+    fields = ['username', 'telephone', 'address', 'created_at']
+    readonly_fields = ['created_at']
+    ordering = ['-created_at']
+
+
+admin.site.register(Order, OrderAdmin)

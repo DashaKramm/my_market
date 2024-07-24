@@ -2,3 +2,4 @@ from webapp.views.products import ProductListView, ProductDetailView, CreateProd
     UpdateProductView, ProductsByCategoryView
 from webapp.views.categories import CategoryCreateView, CategoryListView, CategoryDeleteView, CategoryUpdateView
 from webapp.views.cart import AddToCartView, CartView, RemoveFromCartView
+from webapp.views.orders import OrderCreateView, OrderSuccessView
